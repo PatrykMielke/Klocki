@@ -9,7 +9,6 @@
 <body>
     <x-header/>
     <x-navbar/>
-    @yield('content')
-    <x-footer/>
+
 </body>
 </html>

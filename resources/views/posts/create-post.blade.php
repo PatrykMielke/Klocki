@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@include('layout.layout')
 <div class="container-sm my-lg-5">
     <form method="POST" action="{{ url('/post/create') }}">
         @csrf

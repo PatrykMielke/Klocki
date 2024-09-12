@@ -12,8 +12,11 @@ Route::get('/', function () {
 // Posts
 
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/post/{post}', [PostController::class, 'create']);
-Route::get('/post/create', [PostController::class, 'edit']);
+Route::get('/post/create', [PostController::class, 'create']);
+Route::get('/post/edit/{post}', [PostController::class, 'edit']);
+Route::get('/post/{post}', [PostController::class, 'show']);
+//Route::get('/post/{post}', [PostController::class, 'create']);
+
 Route::post('/post/create', [PostController::class, 'store']);
 Route::put('/post/{post}', [PostController::class, 'update']);
-Route::delete('/post/{post}', [PostController::class, 'destroy']);
+Route::delete('/post/destroy/{post}', [PostController::class, 'destroy']);

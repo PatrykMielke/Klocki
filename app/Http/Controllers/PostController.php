@@ -31,7 +31,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255|unique:posts',
             'snippet' => 'required|max:255|unique:posts',
-            'body' => 'required|max:255',
+            'body' => 'required|max:65535',
         ]);
 
         Post::create($validated);
@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.single-post', ['post' =>Post::class::find($post->id)] );
+        return view('posts.single-post-page', ['post' =>Post::class::find($post->id)] );
     }
 
     /**
@@ -61,9 +61,9 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'title' => 'required|max:255',
-            'snippet' => 'required|max:255',
-            'body' => 'required',
+            'title' => 'required|max:255|unique:posts',
+            'snippet' => 'required|max:255|unique:posts',
+            'body' => 'required|max:65535',
         ]);
         Post::where('id', $post->id)->update($validated);
         return redirect('/post/' . $post->id);
