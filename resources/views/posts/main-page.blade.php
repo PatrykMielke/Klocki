@@ -1,8 +1,6 @@
 @include('layout.layout')
 
-<a href="{{ url('/post/create') }}">
-    <a class="btn btn-primary btn-sm " role="button"> Utwórz nowy post</a>
-</a>
+
 
 <div class="container-sm">
     <div class="row row-cols-1 row-cols-md-2 g-4">
