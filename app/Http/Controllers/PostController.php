@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -32,9 +34,22 @@ class PostController extends Controller
             'title' => 'required|max:255|unique:posts',
             'snippet' => 'required|max:255|unique:posts',
             'body' => 'required|max:65535',
+            'file' => 'required|max:2048',
         ]);
 
-        Post::create($validated);
+        if ($request->hasFile('file')) {
+            $path = $request->file->store('post-images');
+
+        }
+
+        Post::create(
+            [
+                'title' => $validated['title'],
+                'snippet' => $validated['snippet'],
+                'body' => $validated['body'],
+                'path_to_image' => $path,
+            ]
+        );
         return redirect('/posty');
 
     }
