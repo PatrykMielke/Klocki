@@ -9,7 +9,7 @@
             <p class="card-text">{{ $post->body }}</p>
         </div>
     </div>
-    <form action="{{ url('/post/edit/' . $post->id)}}" method="post">
+    <form action="{{ url('/post/edit/' . $post->id)}}" method="get">
         @csrf
         <button type="submit" class="btn btn-primary">Edit</button>
     </form>
