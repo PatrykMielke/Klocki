@@ -82,7 +82,7 @@ class PostController extends Controller
             'title' => 'required|max:255|unique:posts',
             'snippet' => 'required|max:255|unique:posts',
             'body' => 'required|max:65535',
-            'file' => 'required|mimes:jpg,png,pdf|max:2048',
+            //'file' => 'required|mimes:jpg,png,pdf|max:2048',
         ]);
         Post::where('id', $post->id)->update($validated);
         return redirect('/post/' . $post->id);
