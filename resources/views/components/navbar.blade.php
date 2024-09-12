@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-bg sticky-top">
     <div class="container-fluid d-flex py-3">
         <a class="brand mx-5" href=" {{ url('/')}} ">
-            <img src="{{ asset('logo.png') }}" alt="logo" width="150" height="50">
+            <img class="logo" src="{{ asset('logo.png') }}" alt="logo" width="150" height="50">
         </a>
 
         <button class="navbar-toggler align-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,14 +18,11 @@
 
         </ul>
 
-        @if (Route::has('post'))
+
         <form class="mx-5 d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Szukaj bloga" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Szukaj</button>
+            <button class="btn btn-outline-light" type="submit">Szukaj</button>
         </form>
-        @endif
-
-
 
         </div>
     </div>

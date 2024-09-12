@@ -9,7 +9,14 @@
                 <img src="{{ asset('/storage/post-images/dice-1.jpg')}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">{{ $post->snippet }}</p>              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text">{{ $post->snippet }}</p>
+                    <p class="card-text"><small class="text-muted">
+                @if($post->created_at < $post->updated_at)
+                    Edytowane: {{date('d.m.Y', strtotime($post->updated_at));}}
+                @else
+                    Dodano: {{date('d.m.Y', strtotime($post->created_at));}}
+                @endif
+                    </small></p>
                 </div>
             </div>
 
@@ -20,3 +27,4 @@
     </div>
 
 </div>
+<div class="container-fluid blurred-index"></div>

@@ -15,7 +15,10 @@
           <label for="exampleInputPassword1" class="form-label">body</label>
           <input name="body" type="text" class="form-control" id="exampleInputPassword1" placeholder=" {{ $post->body}}" value = "{{ $post->body}}">
         </div>
-
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+          </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

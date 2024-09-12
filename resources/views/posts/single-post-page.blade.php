@@ -19,6 +19,6 @@
         <button type="submit" class="btn btn-primary">Delete</button>
     </form>
     </div>
-
+    <div class="container-fluid blurred-index"></div>
 </div>
 <x-footer/>

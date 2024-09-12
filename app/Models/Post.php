@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'snippet',
         'body',
+        'path_to_image'
     ];
 
     protected $table = 'posts';
