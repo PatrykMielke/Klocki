@@ -19,3 +19,39 @@ body {
 .poppins{
     font-family: 'Poppins', sans-serif !important;
 }
+
+body, html {
+    height: 100%;
+}
+
+
+.bg-index {
+    /* The image used */
+    //background-image: url("/public/storage/backgrounds/bg-index.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    z-index: -1;
+    position:absolute;
+}
+
+.blurred-index {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100%;
+    background-image: url("/public/storage/backgrounds/bg-index.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(4px);
+    z-index: -1;
+  }

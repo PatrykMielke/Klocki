@@ -35,7 +35,7 @@ class PostController extends Controller
         ]);
 
         Post::create($validated);
-        return redirect('/posts');
+        return redirect('/posty');
 
     }
 
@@ -75,6 +75,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         Post::destroy($post->id);
-        return redirect('/posts');
+        return redirect('/posty');
     }
 }
