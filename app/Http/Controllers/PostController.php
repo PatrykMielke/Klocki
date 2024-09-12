@@ -38,8 +38,11 @@ class PostController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            $path = $request->file->store('post-images');
-
+            $path = $request->file->store('public/post-images');
+            $path = substr($path, 7);
+        }
+        else{
+            dd("error");
         }
 
         Post::create(
