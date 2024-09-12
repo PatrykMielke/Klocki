@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -30,12 +31,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255|unique:posts',
-            'snippet' => 'required|max:255|unique:posts',
+        $rules = [
+            'title' => 'required|max:255',
+            'snippet' => 'required|max:255',
             'body' => 'required|max:65535',
             'file' => 'required|max:2048',
-        ]);
+        ];
+
+        $validator = Validator::make(
+            data: $request->all(),
+            rules: $rules
+        );
+
+        if ($validator->fails()) {
+            dd("error");
+        }
 
         if ($request->hasFile('file')) {
             $path = $request->file->store('public/post-images');
@@ -47,9 +57,10 @@ class PostController extends Controller
 
         Post::create(
             [
-                'title' => $validated['title'],
-                'snippet' => $validated['snippet'],
-                'body' => $validated['body'],
+                'title' => $request->title,
+                'snippet' => $request->snippet,
+                'body' => $request->body,
+            
                 'path_to_image' => $path,
             ]
         );
@@ -79,8 +90,8 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'title' => 'required|max:255|unique:posts',
-            'snippet' => 'required|max:255|unique:posts',
+            'title' => 'required|max:255',
+            'snippet' => 'required|max:255',
             'body' => 'required|max:65535',
             //'file' => 'required|mimes:jpg,png,pdf|max:2048',
         ]);

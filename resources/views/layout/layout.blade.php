@@ -7,11 +7,7 @@
     @vite(['resources/css/app.css','resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="container-fluid">
-        <x-header/>
-        <x-navbar/>
-    </div>
-
+    <x-navbar/>
 
 </body>
 </html>

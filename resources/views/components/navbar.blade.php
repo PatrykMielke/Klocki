@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-bg sticky-top">
     <div class="container-fluid d-flex py-3">
-        <a class="brand mx-5" href=" {{ url('/')}} ">
+        <a class="brand" href=" {{ url('/')}} ">
             <img class="logo" src="{{ asset('logo.png') }}" alt="logo" width="150" height="50">
         </a>
 

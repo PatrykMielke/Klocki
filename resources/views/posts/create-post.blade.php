@@ -5,19 +5,19 @@
 
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">title</label>
-          <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="title">
+          <input required name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="title">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">snippet</label>
-          <input name="snippet" type="text" class="form-control" id="snippet">
+          <input required  name="snippet" type="text" class="form-control" id="snippet">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">body</label>
-          <input name="body" type="text" class="form-control" id="body">
+          <input required  name="body" type="text" class="form-control" id="body">
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Default file input example</label>
-            <input name="file" class="form-control" type="file" id="formFile">
+            <input required  name="file" class="form-control" type="file" id="formFile">
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
