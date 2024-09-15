@@ -16,6 +16,8 @@
             <li class="nav-item"><a class="nav-link text-white fs-4 mx-3" href=" {{ url('/posty')}} ">Blog</a></li>
             <li class="nav-item"><a class="nav-link text-white fs-4 mx-3" href=" {{ url('/kontakt')}} ">Kontakt</a></li>
             <li class="nav-item"><a class="nav-link text-white fs-4 mx-3" href="{{ url('/post/create') }}">Utwórz nowy post</a></li>
+            <li class="nav-item"><a class="nav-link text-white fs-4 mx-3" href="{{ url('/logowanie') }}">Zaloguj się</a></li>
+
         </ul>
 
         @if (Route::is('posty'))
@@ -24,6 +26,8 @@
             <button class="btn btn-outline-light" type="submit">Szukaj</button>
         </form>
         @endif
+
+
         </div>
     </div>
 </nav>

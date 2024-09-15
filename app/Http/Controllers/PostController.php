@@ -35,7 +35,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'snippet' => 'required|max:255',
             'body' => 'required|max:65535',
-            'file' => 'required|max:2048',
+            'file' => 'required|max:2048|mimes:jpg,png,webp,jpeg',
         ];
 
         $validator = Validator::make(
