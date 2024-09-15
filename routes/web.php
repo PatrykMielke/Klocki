@@ -14,7 +14,7 @@ Route::get('/kontakt', function () {
 
 // Posts
 
-Route::get('/posty', [PostController::class, 'index']);
+Route::get('/posty', [PostController::class, 'index'])->name('posty');
 Route::get('/post/create', [PostController::class, 'create']);
 Route::get('/post/edit/{post}', [PostController::class, 'edit']);
 Route::get('/post/{post}', [PostController::class, 'show']);

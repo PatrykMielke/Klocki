@@ -8,7 +8,9 @@
     <div class="col">
         <a class="blog-a" href="{{ url('/post/' . $post->id) }}">
             <div class="card mb-3">
-                <img src="{{ asset('storage/'.$post->path_to_image) }}" class="card-img-top" alt="...">
+
+                <img src="{{ asset('post-images/'.$post->path_to_image) }}" class="card-img-top" alt="{{$post->path_to_image}}">
+
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->snippet }}</p>

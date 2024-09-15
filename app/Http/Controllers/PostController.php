@@ -48,8 +48,15 @@ class PostController extends Controller
         }
 
         if ($request->hasFile('file')) {
-            $path = $request->file->store('public/post-images');
-            $path = substr($path, 7);
+
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+            $file->move('post-images/',$fileName);
+
+            /* if(!Storage::disk('public_uploads')->put($path, $file_content)) {
+                return false;
+            } */
         }
         else{
             dd("error");
@@ -60,8 +67,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'snippet' => $request->snippet,
                 'body' => $request->body,
-            
-                'path_to_image' => $path,
+
+                'path_to_image' => $fileName,
             ]
         );
         return redirect('/posty');
