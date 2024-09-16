@@ -68,7 +68,7 @@ class PostController extends Controller
                 'path_to_image' => $fileName,
             ]
         );
-        return redirect('/posty');
+        return redirect('/post');
 
     }
 
@@ -156,6 +156,6 @@ class PostController extends Controller
         File::delete('post-images/'.$currentImage);
 
         Post::destroy($post->id);
-        return redirect('/posty');
+        return redirect('/post');
     }
 }

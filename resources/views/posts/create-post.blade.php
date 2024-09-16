@@ -4,7 +4,6 @@
         <h1 class="text-center">Utwórz nowy post</h1>
         <form method="POST" action="{{ url('/post/create') }}" enctype="multipart/form-data">
             @csrf
-
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Tytuł</label>
               <input required name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="title">
