@@ -1,12 +1,23 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Home
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 Route::get('/kontakt', function () {
     return view('contact');
 });
@@ -14,10 +25,10 @@ Route::get('/kontakt', function () {
 // Auth
 
 Route::get('/logowanie', function () {
-    return view('login');
+    return view('auth.login');
 });
 Route::get('/rejestracja', function () {
-    return view('register');
+    return view('auth.register');
 });
 
 
@@ -41,3 +52,6 @@ Route::get('/sklep', function () {
 });
 
 
+
+
+require __DIR__.'/auth.php';

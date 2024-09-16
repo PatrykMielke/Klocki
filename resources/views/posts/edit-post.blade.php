@@ -1,4 +1,5 @@
 @include('layout.layout')
+
 <div class=" bg-body my-5 py-3 rounded mx-auto post-form">
     <div class="container-fluid mx-auto">
         <h1 class="text-center">Edytuj post</h1>

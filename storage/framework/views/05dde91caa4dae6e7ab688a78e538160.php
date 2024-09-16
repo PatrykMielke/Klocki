@@ -1,4 +1,5 @@
 <?php echo $__env->make('layout.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
 <div class=" bg-body my-5 py-3 rounded mx-auto post-form">
     <div class="container-fluid mx-auto">
         <h1 class="text-center">Edytuj post</h1>
