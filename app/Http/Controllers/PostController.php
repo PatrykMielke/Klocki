@@ -51,7 +51,7 @@ class PostController extends Controller
 
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $extension;
+            $fileName = time() . rand(1000,9999) . '.' . $extension;
             $file->move('post-images/',$fileName);
 
             /* if(!Storage::disk('public_uploads')->put($path, $file_content)) {

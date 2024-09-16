@@ -43,6 +43,5 @@
     </div>
 </div>
 
-<div class="container-fluid blurred-index"></div>
-
+<x-postbackground/>
 <x-footer/>

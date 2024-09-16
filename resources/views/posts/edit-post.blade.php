@@ -1,22 +1,34 @@
-@extends('layout.layout')
-<div class="container-sm my-lg-5">
-    <form action="{{ url('/post/edit/' . $post->id) }} " method="post">
-        @method('PUT')
-        @csrf
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">title</label>
-          <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" {{ $post->title}}" value = "{{ $post->title}}">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">snippet</label>
-          <input name="snippet" type="text" class="form-control" id="exampleInputPassword1" placeholder=" {{ $post->snippet}}" value = "{{ $post->snippet}}">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">body</label>
-          <input name="body" type="text" class="form-control" id="exampleInputPassword1" placeholder=" {{ $post->body}}" value = "{{ $post->body}}">
-        </div>
+@include('layout.layout')
+<div class=" bg-body my-5 py-3 rounded mx-auto post-form">
+    <div class="container-fluid mx-auto">
+        <h1 class="text-center">Edytuj post</h1>
+        <form method="POST" action="{{ url('/post/edit/' . $post->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Tytuł</label>
+              <input required name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="title">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Opis</label>
+              <input required  name="snippet" type="text" class="form-control" id="snippet">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Treść</label>
+              <input required  name="body" type="text" class="form-control" id="body">
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Tło</label>
+                <input name="file" class="form-control" type="file" id="formFile">
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
+    <x-postbackground/>
 </div>
+
+
+
+
+

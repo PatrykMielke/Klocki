@@ -6,4 +6,4 @@
 
     </div>
 
-<div class="container-fluid blurred-index"></div>
+    <x-postbackground/>

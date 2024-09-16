@@ -34,8 +34,7 @@ body {
     left: 0;
     width: 100vh;
     height: 100%;
-    //background-image: url("/public/storage/backgrounds/bg-index.jpg");
-    background-image: url("storage/backgrounds/background.jpg");
+    background-image: url("/storage/backgrounds/post-background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,4 +45,9 @@ body {
 
 .logo {
     filter: invert(1);
+}
+
+.post-form{
+    max-width: 50vw;
+    padding: 15px;
 }
