@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -54,9 +55,6 @@ class PostController extends Controller
             $fileName = time() . rand(1000,9999) . '.' . $extension;
             $file->move('post-images/',$fileName);
 
-            /* if(!Storage::disk('public_uploads')->put($path, $file_content)) {
-                return false;
-            } */
         }
         else{
             dd("error");
@@ -67,7 +65,6 @@ class PostController extends Controller
                 'title' => $request->title,
                 'snippet' => $request->snippet,
                 'body' => $request->body,
-
                 'path_to_image' => $fileName,
             ]
         );
@@ -96,13 +93,56 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
+        $rules = [
             'title' => 'required|max:255',
             'snippet' => 'required|max:255',
             'body' => 'required|max:65535',
-            //'file' => 'required|mimes:jpg,png,pdf|max:2048',
+        ];
+
+        $validator = Validator::make(
+            data: $request->all(),
+            rules: $rules
+        );
+
+        if ($validator->fails()) {
+            dd("error");
+        }
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $validator = Validator::make(
+                data: [$file],
+                rules: ['file' => 'max:2048|mimes:jpg,png,webp,jpeg'],
+            );
+
+            if ($validator->fails()) {
+                dd("error");
+            }
+
+            $currentImage = Post::find($post->id)->path_to_image;
+
+            File::delete('post-images/'.$currentImage);
+
+
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . rand(1000,9999) . '.' . $extension;
+            $file->move('post-images/',$fileName);
+
+            Post::where('id', $post->id)->update([
+                'title' => $request->title,
+                'snippet' => $request->snippet,
+                'body' => $request->body,
+                'path_to_image' => $fileName,
+            ]);
+
+            return redirect('/post/' . $post->id);
+        }
+
+        Post::where('id', $post->id)->update([
+            'title' => $request->title,
+            'snippet' => $request->snippet,
+            'body' => $request->body,
         ]);
-        Post::where('id', $post->id)->update($validated);
         return redirect('/post/' . $post->id);
     }
 
@@ -111,6 +151,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        $currentImage = Post::find($post->id)->path_to_image;
+        File::delete('post-images/'.$currentImage);
+
         Post::destroy($post->id);
         return redirect('/posty');
     }

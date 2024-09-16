@@ -1,31 +1,39 @@
 <?php echo $__env->make('layout.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <div class="container-sm my-lg-5">
-    <div class="card mb-3">
+    <div class="card mx-auto mb-3" style="width: 48rem;">
         <img src="<?php echo e(asset('post-images/'.$post->path_to_image)); ?>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><?php echo e($post->title); ?></h5>
           <p class="card-text"><?php echo e($post->body); ?></p>
-          <?php if($post->created_at < $post->updated_at): ?>
-          <p class="card-text"><small class="text-body-secondary">Edytowane: <?php echo e(date('d.m.Y', strtotime($post->updated_at))); ?></small></p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8">
+                        <?php if($post->created_at < $post->updated_at): ?>
+                        <p class="card-text"><small class="text-body-secondary">Edytowane: <?php echo e(date('d.m.Y', strtotime($post->updated_at))); ?></small></p>
 
-          <?php else: ?>
-          <p class="card-text"><small class="text-body-secondary">Dodano: <?php echo e(date('d.m.Y', strtotime($post->created_at))); ?></small></p>
+                        <?php else: ?>
+                        <p class="card-text"><small class="text-body-secondary">Dodano: <?php echo e(date('d.m.Y', strtotime($post->created_at))); ?></small></p>
 
-          <?php endif; ?>
-
+                        <?php endif; ?>
+                    </div>
+                    <div class="col">
+                        <form action="<?php echo e(url('/post/edit/' . $post->id)); ?>" method="get">
+                            <?php echo csrf_field(); ?>
+                            <button type="submit" class="btn btn-primary">Edytuj</button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form action="<?php echo e(url('/post/destroy/' . $post->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
+                            <button type="submit" class="btn btn-primary">Usuń</button>
+                        </form>
+                    </div>
+                  </div>
+            </div>
         </div>
       </div>
-
-    <form action="<?php echo e(url('/post/edit/' . $post->id)); ?>" method="get">
-        <?php echo csrf_field(); ?>
-        <button type="submit" class="btn btn-primary">Edit</button>
-    </form>
-    <form action="<?php echo e(url('/post/destroy/' . $post->id)); ?>" method="post">
-        <?php echo csrf_field(); ?>
-        <?php echo method_field('DELETE'); ?>
-        <button type="submit" class="btn btn-primary">Delete</button>
-    </form>
     </div>
     <?php if (isset($component)) { $__componentOriginal2e3c67daf91d698fab2ade49f1143e61 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal2e3c67daf91d698fab2ade49f1143e61 = $attributes; } ?>

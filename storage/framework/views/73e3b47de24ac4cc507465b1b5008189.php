@@ -2,12 +2,12 @@
 
 
 
-<div class="container-sm">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="container-sm mx-auto">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3s">
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col">
         <a class="blog-a" href="<?php echo e(url('/post/' . $post->id)); ?>">
-            <div class="card mb-3">
+            <div class="card mb-4">
 
                 <img src="<?php echo e(asset('post-images/'.$post->path_to_image)); ?>" class="card-img-top" alt="<?php echo e($post->path_to_image); ?>">
 

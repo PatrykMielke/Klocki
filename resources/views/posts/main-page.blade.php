@@ -2,12 +2,12 @@
 
 
 
-<div class="container-sm">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="container-sm mx-auto">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3s">
     @foreach ($posts as $post)
     <div class="col">
         <a class="blog-a" href="{{ url('/post/' . $post->id) }}">
-            <div class="card mb-3">
+            <div class="card mb-4">
 
                 <img src="{{ asset('post-images/'.$post->path_to_image) }}" class="card-img-top" alt="{{$post->path_to_image}}">
 

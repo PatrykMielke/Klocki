@@ -40,7 +40,8 @@ body {
     background-repeat: no-repeat;
     filter: blur(4px) brightness(90%);
     z-index: -1;
-    box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.751) inset;
+    transform: scale(1.1);
+    box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.9) inset;
 }
 
 .logo {
