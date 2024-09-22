@@ -9,11 +9,23 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function publishedPosts($query)
+    {
+        return $query->where('published', true);
+    }
+
     protected $fillable = [
         'title',
         'snippet',
         'body',
-        'path_to_image'
+        'image',
+        'user_id',
+        'is_published',
     ];
 
     protected $table = 'posts';

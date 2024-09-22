@@ -38,10 +38,12 @@ Route::get('/rejestracja', function () {
 //Route::resource('post', PostController::class);
 
 Route::get('/post', [PostController::class, 'index'])->name('post');
+Route::get('/post/unpublished', [PostController::class, 'unpublished']);
 Route::get('/post/create', [PostController::class, 'create']);
 Route::get('/post/edit/{post}', [PostController::class, 'edit']);
 Route::get('/post/{post}', [PostController::class, 'show']);
 Route::post('/post/create', [PostController::class, 'store']);
+Route::post('/post/publish/{post}', [PostController::class, 'publishPost']);
 Route::patch('/post/edit/{post}', [PostController::class, 'update']);
 Route::delete('/post/destroy/{post}', [PostController::class, 'destroy']);
 

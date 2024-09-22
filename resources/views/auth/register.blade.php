@@ -24,6 +24,9 @@
 
             <button type="submit" class="btn btn-primary">Zarejestruj</button>
           </form>
+          <div class="text-center">
+            <a href="{{ route('zaloguj') }}">Masz już konto? Zaloguj się</a>
+          </div>
     </div>
 
     <x-postbackground/>

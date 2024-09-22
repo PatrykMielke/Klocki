@@ -2,7 +2,7 @@
 
 <div class="container-sm my-lg-5">
     <div class="card mx-auto mb-3" style="width: 48rem;">
-        <img src="{{ asset('post-images/'.$post->path_to_image) }}" class="card-img-top" alt="...">
+        <img src="{{ asset('post-images/'.$post->image) }}" class="card-img-top" alt="{{$post->image}}">
         <div class="card-body">
           <h5 class="card-title">{{$post->title}}</h5>
           <p class="card-text">{{$post->body}}</p>
@@ -18,6 +18,11 @@
                         @endif
                     </div>
                     <div class="col">
+                        <form action="{{ url('/post/publish/' . $post->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Opublikuj</button>
+                        </form>
+                    </div>
                         <form action="{{ url('/post/edit/' . $post->id)}}" method="get">
                             @csrf
                             <button type="submit" class="btn btn-primary">Edytuj</button>

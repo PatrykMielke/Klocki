@@ -9,7 +9,7 @@
         <a class="blog-a" href="{{ url('/post/' . $post->id) }}">
             <div class="card mb-4">
 
-                <img src="{{ asset('post-images/'.$post->path_to_image) }}" class="card-img-top" alt="{{$post->path_to_image}}">
+                <img src="{{ asset('post-images/'.$post->image) }}" class="card-img-top" alt="{{$post->image}}">
 
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
@@ -20,6 +20,7 @@
                 @else
                     Dodano: {{date('d.m.Y', strtotime($post->created_at));}}
                 @endif
+                    przez {{ $post->user->name }}
                     </small></p>
                 </div>
             </div>

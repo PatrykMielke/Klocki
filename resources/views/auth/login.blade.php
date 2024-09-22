@@ -19,6 +19,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Zaloguj</button>
           </form>
+          <div class="text-center">
+            <a href="{{ route('rejestracja') }}">Nie masz konta? Zarejestruj sie</a>
+          </div>
     </div>
 
     <x-postbackground/>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.main-page', ['posts' => Post::class::all()]);
+        return view('posts.main-page', ['posts' => Post::class::where('is_published', true)->get()]);
+    }
+    public function unpublished()
+    {
+        return view('posts.main-page', ['posts' => Post::class::where('is_published', false)->get()]);
     }
 
     /**
@@ -59,13 +64,15 @@ class PostController extends Controller
         else{
             dd("error");
         }
-
+        $publish = $request->publish ? true : false;
         Post::create(
             [
                 'title' => $request->title,
                 'snippet' => $request->snippet,
                 'body' => $request->body,
-                'path_to_image' => $fileName,
+                'image' => $fileName,
+                'user_id' => Auth::user()->id,
+                'is_published' => $publish,
             ]
         );
         return redirect('/post');
@@ -156,6 +163,15 @@ class PostController extends Controller
         File::delete('post-images/'.$currentImage);
 
         Post::destroy($post->id);
+        return redirect('/post');
+    }
+
+    public function publishPost(Post $post){
+        Post::where('id', $post->id)->update([
+            'is_published' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
         return redirect('/post');
     }
 }

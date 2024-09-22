@@ -9,7 +9,7 @@
         <a class="blog-a" href="<?php echo e(url('/post/' . $post->id)); ?>">
             <div class="card mb-4">
 
-                <img src="<?php echo e(asset('post-images/'.$post->path_to_image)); ?>" class="card-img-top" alt="<?php echo e($post->path_to_image); ?>">
+                <img src="<?php echo e(asset('post-images/'.$post->image)); ?>" class="card-img-top" alt="<?php echo e($post->image); ?>">
 
                 <div class="card-body">
                     <h5 class="card-title"><?php echo e($post->title); ?></h5>
@@ -22,6 +22,8 @@
                     Dodano: <?php echo e(date('d.m.Y', strtotime($post->created_at))); ?>
 
                 <?php endif; ?>
+                    przez <?php echo e($post->user->name); ?>
+
                     </small></p>
                 </div>
             </div>

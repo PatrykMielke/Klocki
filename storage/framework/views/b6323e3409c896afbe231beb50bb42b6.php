@@ -24,6 +24,9 @@
 
             <button type="submit" class="btn btn-primary">Zarejestruj</button>
           </form>
+          <div class="text-center">
+            <a href="<?php echo e(route('zaloguj')); ?>">Masz już konto? Zaloguj się</a>
+          </div>
     </div>
 
     <?php if (isset($component)) { $__componentOriginal2e3c67daf91d698fab2ade49f1143e61 = $component; } ?>

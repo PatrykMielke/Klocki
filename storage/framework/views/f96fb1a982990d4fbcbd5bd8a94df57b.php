@@ -2,7 +2,7 @@
 
 <div class="container-sm my-lg-5">
     <div class="card mx-auto mb-3" style="width: 48rem;">
-        <img src="<?php echo e(asset('post-images/'.$post->path_to_image)); ?>" class="card-img-top" alt="...">
+        <img src="<?php echo e(asset('post-images/'.$post->image)); ?>" class="card-img-top" alt="<?php echo e($post->image); ?>">
         <div class="card-body">
           <h5 class="card-title"><?php echo e($post->title); ?></h5>
           <p class="card-text"><?php echo e($post->body); ?></p>
@@ -18,6 +18,11 @@
                         <?php endif; ?>
                     </div>
                     <div class="col">
+                        <form action="<?php echo e(url('/post/publish/' . $post->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <button type="submit" class="btn btn-primary">Opublikuj</button>
+                        </form>
+                    </div>
                         <form action="<?php echo e(url('/post/edit/' . $post->id)); ?>" method="get">
                             <?php echo csrf_field(); ?>
                             <button type="submit" class="btn btn-primary">Edytuj</button>

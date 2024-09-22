@@ -19,8 +19,13 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Tło</label>
                 <input required  name="file" class="form-control" type="file" id="formFile">
-              </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="mb-3 form-check">
+                <input name="publish"type="checkbox" class="form-check-input" id="exampleCheck1" checked>
+                <label class="form-check-label" for="exampleCheck1">Opublikuj</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Utwórz</button>
         </form>
     </div>
 
